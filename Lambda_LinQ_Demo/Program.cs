@@ -10,7 +10,7 @@ namespace Lambda_LinQ_Demo
     {
         static void Main(string[] args)
         {
-           
+            Management management = new Management();
 
             List<ProductReview> list = new List<ProductReview>()
             {
@@ -41,7 +41,21 @@ namespace Lambda_LinQ_Demo
                 new ProductReview(){ ProductID = 6,UserID = 25, Rating=6, Review="Nice",IsLike=false},
 
             };
-           
+            while (true)
+            {
+                Console.WriteLine("1-Top three ratings");
+                Console.WriteLine("Choose a option");
+                int op=Convert.ToInt32(Console.ReadLine());
+                switch(op) 
+                {
+                    case 1:
+                        management.TopRecord(list);
+                        break;
+                }
+            }
+
+
+
         }
     }
 }
