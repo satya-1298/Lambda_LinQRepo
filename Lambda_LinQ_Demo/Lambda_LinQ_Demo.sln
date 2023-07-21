@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda_LinQ_Demo", "Lambda_LinQ_Demo.csproj", "{1800F036-6F01-4330-95B3-8082774EB811}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1800F036-6F01-4330-95B3-8082774EB811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1800F036-6F01-4330-95B3-8082774EB811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1800F036-6F01-4330-95B3-8082774EB811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1800F036-6F01-4330-95B3-8082774EB811}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0197A57B-C7B7-4399-AAE9-AAC9F8F6BBCF}
+	EndGlobalSection
+EndGlobal
