@@ -36,11 +36,11 @@ namespace Lambda_LinQ_Demo
             var record=from product in products where (product.ProductID == 1 || product.ProductID == 4 || product.ProductID == 9)&& product.Rating>3 select product;
 
            // Display(result);
-            foreach (var prod in record)
-            {
+              foreach (var prod in record)
+              {
                 Console.WriteLine(prod.ProductID + "  " + prod.UserID + "  " + prod.Rating + "  " + prod.Review + "  " + prod.IsLike);
 
-            }
+              }
 
         }
         public void Display(IEnumerable<ProductReview> result)
@@ -53,7 +53,16 @@ namespace Lambda_LinQ_Demo
 
         }
        
-
+        public void CountProduct(List<ProductReview> products)
+        {
+            var record = products.GroupBy(x => x.ProductID).Select(x => new { ProductId = x.Key, Count = x.Count() });
+            Console.WriteLine("Using LinQ");
+            Console.WriteLine("-----------------------------");
+            foreach (var prod in record)
+            {
+                Console.WriteLine(prod.ProductId + "  " + prod.Count);
+            }
+        }
 
     }
 }
