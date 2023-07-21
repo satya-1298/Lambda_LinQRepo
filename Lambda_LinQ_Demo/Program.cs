@@ -44,6 +44,7 @@ namespace Lambda_LinQ_Demo
             while (true)
             {
                 Console.WriteLine("1-Top three ratings");
+                Console.WriteLine("2-Top three Ratings by product Id");
                 Console.WriteLine("Choose a option");
                 int op=Convert.ToInt32(Console.ReadLine());
                 switch(op) 
@@ -51,6 +52,10 @@ namespace Lambda_LinQ_Demo
                     case 1:
                         management.TopRecord(list);
                         break;
+                    case 2:
+                        management.ProductRating(list); 
+                        break;
+
                 }
             }
 
