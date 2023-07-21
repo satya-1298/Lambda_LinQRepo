@@ -32,20 +32,25 @@ namespace Lambda_LinQ_Demo
         }
         public void ProductRating(List<ProductReview> products)
         {
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("Using lambda");
+            Console.WriteLine("-------------------------------");
             var result = products.Where(x => x.Rating > 3 && (x.ProductID == 1 || x.ProductID == 4 || x.ProductID == 9));
-            var record=from product in products where (product.ProductID == 1 || product.ProductID == 4 || product.ProductID == 9)&& product.Rating>3 select product;
-
-           // Display(result);
-              foreach (var prod in record)
+            Display(result);
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("Using LinQ");
+            Console.WriteLine("-------------------------------");
+            var record = from product in products where (product.ProductID == 1 || product.ProductID == 4 || product.ProductID == 9) && product.Rating > 3 select product;
+            foreach (var prod in record)
               {
                 Console.WriteLine(prod.ProductID + "  " + prod.UserID + "  " + prod.Rating + "  " + prod.Review + "  " + prod.IsLike);
 
               }
 
         }
-        public void Display(IEnumerable<ProductReview> result)
+        public void Display(IEnumerable<ProductReview> satya)
         {
-            foreach (var prod in result)
+            foreach (var prod in satya)
             {
                 Console.WriteLine(prod.ProductID + "  " + prod.UserID + "  " + prod.Rating + "  " + prod.Review + "  " + prod.IsLike);
 
@@ -56,13 +61,15 @@ namespace Lambda_LinQ_Demo
         public void CountProduct(List<ProductReview> products)
         {
             var record = products.GroupBy(x => x.ProductID).Select(x => new { ProductId = x.Key, Count = x.Count() });
+            Console.WriteLine("-----------------------------");
             Console.WriteLine("Using LinQ");
             Console.WriteLine("-----------------------------");
             foreach (var prod in record)
             {
                 Console.WriteLine(prod.ProductId + "  " + prod.Count);
             }
+           
         }
-
+       
     }
 }

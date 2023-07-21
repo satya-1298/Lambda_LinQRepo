@@ -59,6 +59,7 @@ namespace Lambda_LinQ_Demo
                     case 3:
                         management.CountProduct(list);
                         break;
+                  
 
                 }
             }
