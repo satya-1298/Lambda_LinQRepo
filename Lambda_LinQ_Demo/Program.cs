@@ -48,6 +48,7 @@ namespace Lambda_LinQ_Demo
                 Console.WriteLine("3-Count of Product");
                 Console.WriteLine("4-Select ProductId Review");
                 Console.WriteLine("5-Skip 5 TopRecords display other Records ");
+                Console.WriteLine("6-Display ProductID,Review using Select operator");
                 Console.WriteLine("Choose a option");
                 int op=Convert.ToInt32(Console.ReadLine());
                 switch(op) 
@@ -66,6 +67,9 @@ namespace Lambda_LinQ_Demo
                         break;
                     case 5:
                         management.SkipTop_Record(list);
+                        break;
+                    case 6:
+                        management.ProductId_ReviewUsing_Select(list);
                         break;
                   
 

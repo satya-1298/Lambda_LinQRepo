@@ -9,6 +9,7 @@ namespace Lambda_LinQ_Demo
 {
     public class Management
     {
+        //UC-2
         public void TopRecord(List<ProductReview> products)
         {
             var result = products.OrderByDescending(x => x.Rating).Take(3);
@@ -30,6 +31,7 @@ namespace Lambda_LinQ_Demo
 
 
         }
+        //UC-3
         public void ProductRating(List<ProductReview> products)
         {
             Console.WriteLine("-------------------------------");
@@ -57,7 +59,7 @@ namespace Lambda_LinQ_Demo
             }
 
         }
-       
+       //UC-4 - Retrieve count of review present for each productID
         public void CountProduct(List<ProductReview> products)
         {
             var record = products.GroupBy(x => x.ProductID).Select(x => new { ProductId = x.Key, Count = x.Count() });
@@ -78,6 +80,7 @@ namespace Lambda_LinQ_Demo
             }
 
         }
+        //UC-5
         public void ProductId_Review(List<ProductReview> products)
         {
             Console.WriteLine("-----------------------------");
@@ -99,7 +102,7 @@ namespace Lambda_LinQ_Demo
             }
 
         }
-
+        //UC-6
         public void SkipTop_Record(List<ProductReview> products)
         {
             var records = (from product in products select product).Skip(5);
@@ -117,6 +120,20 @@ namespace Lambda_LinQ_Demo
             var result = products.OrderByDescending(x => x.Rating).Skip(5);
             Display(result);
 
+        }
+        //UC-7 - Retrieve only productId and review from the list for all records using LINQ select operator.
+        public void ProductId_ReviewUsing_Select(List<ProductReview> products)
+        {
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Using Lambda");
+            Console.WriteLine("-----------------------------");
+            var result = products.Select(x => new { x.ProductID, x.Review });
+
+            foreach (var product in result)
+            {
+                Console.WriteLine(product.ProductID + "  " + product.Review);
+            }
+           
         }
     }
 }
