@@ -99,5 +99,19 @@ namespace Lambda_LinQ_Demo
             }
 
         }
+
+        public void SkipTop_Record(List<ProductReview> products)
+        {
+            var records = (from product in products select product).Skip(5);
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Using LinQ");
+            Console.WriteLine("-----------------------------");
+            foreach (var prod in records)
+            {
+                Console.WriteLine(prod.ProductID + "  " + prod.UserID + "  " + prod.Rating + "  " + prod.Review + "  " + prod.IsLike);
+            }
+           // Display(records);
+           
+        }
     }
 }
