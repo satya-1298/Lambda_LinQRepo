@@ -14,10 +14,10 @@ namespace Lambda_LinQ_Demo
 
             List<ProductReview> list = new List<ProductReview>()
             {
-                new ProductReview(){ ProductID = 1,UserID = 1, Rating=5, Review="Average",IsLike=true},
+                new ProductReview(){ ProductID = 1,UserID = 1, Rating=1, Review="Average",IsLike=true},
                 new ProductReview(){ ProductID = 2,UserID = 2, Rating=6, Review="Average",IsLike=true},
                 new ProductReview(){ ProductID = 3,UserID = 3, Rating=3, Review="Bad",IsLike=false},
-                new ProductReview(){ ProductID = 4,UserID = 4, Rating=8, Review="Good",IsLike=true},
+                new ProductReview(){ ProductID = 4,UserID = 4, Rating=2, Review="Good",IsLike=true},
                 new ProductReview(){ ProductID = 5,UserID = 5, Rating=2, Review="Bad",IsLike=false},
                 new ProductReview(){ ProductID = 6,UserID = 6, Rating=1, Review="Bad",IsLike=false},
                 new ProductReview(){ ProductID = 7,UserID = 7, Rating=10, Review="VeryGood",IsLike=true},

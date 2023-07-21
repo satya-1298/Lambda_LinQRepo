@@ -30,10 +30,18 @@ namespace Lambda_LinQ_Demo
 
 
         }
-        public void ProductRating(List<ProductReview> product)
+        public void ProductRating(List<ProductReview> products)
         {
-            var result = product.Where(x => x.Rating > 3 && (x.ProductID == 1 || x.ProductID == 4 || x.ProductID == 9));
-            Display(result);
+            var result = products.Where(x => x.Rating > 3 && (x.ProductID == 1 || x.ProductID == 4 || x.ProductID == 9));
+            var record=from product in products where (product.ProductID == 1 || product.ProductID == 4 || product.ProductID == 9)&& product.Rating>3 select product;
+
+           // Display(result);
+            foreach (var prod in record)
+            {
+                Console.WriteLine(prod.ProductID + "  " + prod.UserID + "  " + prod.Rating + "  " + prod.Review + "  " + prod.IsLike);
+
+            }
+
         }
         public void Display(IEnumerable<ProductReview> result)
         {
@@ -44,6 +52,8 @@ namespace Lambda_LinQ_Demo
             }
 
         }
+       
+
 
     }
 }
