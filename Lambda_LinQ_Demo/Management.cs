@@ -68,8 +68,16 @@ namespace Lambda_LinQ_Demo
             {
                 Console.WriteLine(prod.ProductId + "  " + prod.Count);
             }
-           
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Using Lambda");
+            Console.WriteLine("-----------------------------");
+            var result = products.GroupBy(x => x.ProductID);
+            foreach (var product in result)
+            {
+                Console.WriteLine(product.Key + " " + product.Count());
+            }
+
         }
-       
+
     }
 }
