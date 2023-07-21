@@ -78,6 +78,18 @@ namespace Lambda_LinQ_Demo
             }
 
         }
+        public void ProductId_Review(List<ProductReview> products)
+        {
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Using Lambda");
+            Console.WriteLine("-----------------------------");
+            var result = products.Select(x => new { x.ProductID, x.Review });
 
+            foreach (var product in result)
+            {
+                Console.WriteLine(product.ProductID + "  " + product.Review);
+            }
+          
+        }
     }
 }

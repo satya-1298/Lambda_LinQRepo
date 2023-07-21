@@ -46,6 +46,7 @@ namespace Lambda_LinQ_Demo
                 Console.WriteLine("1-Top three ratings");
                 Console.WriteLine("2-Top three Ratings by product Id");
                 Console.WriteLine("3-Count of Product");
+                Console.WriteLine("4-Select ProductId Review");
                 Console.WriteLine("Choose a option");
                 int op=Convert.ToInt32(Console.ReadLine());
                 switch(op) 
@@ -58,6 +59,9 @@ namespace Lambda_LinQ_Demo
                         break;
                     case 3:
                         management.CountProduct(list);
+                        break;
+                    case 4:
+                        management.ProductId_Review(list);
                         break;
                   
 
