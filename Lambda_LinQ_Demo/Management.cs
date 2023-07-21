@@ -20,7 +20,16 @@ namespace Lambda_LinQ_Demo
                 Console.WriteLine(prod.ProductID + "  " + prod.UserID + "  " + prod.Rating + "  " + prod.Review + "  " + prod.IsLike);
 
             }
-           
+            Console.WriteLine("Using lambda");
+            Console.WriteLine("-------------------------------");
+            foreach (var prod in result)
+            {
+                Console.WriteLine(prod.ProductID + "  " + prod.UserID + "  " + prod.Rating + "  " + prod.Review + "  " + prod.IsLike);
+
+            }
+
+
         }
+       
     }
 }
