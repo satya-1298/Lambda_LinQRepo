@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -12,7 +13,6 @@ namespace Lambda_LinQ_Demo
         //UC-2
         public void TopRecord(List<ProductReview> products)
         {
-            var result = products.OrderByDescending(x => x.Rating).Take(3);
             var record = (from product in products orderby product.Review descending select product).Take(3);
             Console.WriteLine("Using LinQ");
             Console.WriteLine("-------------------------------");
@@ -21,6 +21,7 @@ namespace Lambda_LinQ_Demo
                 Console.WriteLine(prod.ProductID + "  " + prod.UserID + "  " + prod.Rating + "  " + prod.Review + "  " + prod.IsLike);
 
             }
+            var result = products.OrderByDescending(x => x.Rating).Take(3);
             Console.WriteLine("Using lambda");
             Console.WriteLine("-------------------------------");
             foreach (var prod in result)
@@ -141,8 +142,22 @@ namespace Lambda_LinQ_Demo
             {
                 Console.WriteLine(product.ProductID + "  " + product.Review);
             }
+        }
+        //UC-8
+        public DataTable AddToDataTable(List<ProductReview> product)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("ProductID", typeof(int));
+            dataTable.Columns.Add("UserID");
+            dataTable.Columns.Add("Rating");
+            dataTable.Columns.Add("Review");
+            dataTable.Columns.Add("IsLike");
+            foreach(var data in product)
+            {
+                dataTable.Rows.Add(data.ProductID,data.UserID,data.Rating,data.Review,data.IsLike);
 
-
+            }
+            return dataTable;
         }
     }
 }

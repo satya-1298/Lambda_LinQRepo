@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Lambda_LinQ_Demo
         static void Main(string[] args)
         {
             Management management = new Management();
-
+           // List<ProductTable> tables = new List<ProductTable>();   
             List<ProductReview> list = new List<ProductReview>()
             {
                 new ProductReview(){ ProductID = 1,UserID = 1, Rating=1, Review="Average",IsLike=true},
@@ -71,7 +72,10 @@ namespace Lambda_LinQ_Demo
                     case 6:
                         management.ProductId_ReviewUsing_Select(list);
                         break;
-                  
+                    case 7:
+                        DataTable data = new DataTable();
+                        management.AddToDataTable(list);
+                        break;
 
                 }
             }
