@@ -238,11 +238,31 @@ namespace Lambda_LinQ_Demo
             Console.WriteLine("Using Lambda");
             Console.WriteLine("-------------------------------------");
             var val = dataTable.AsEnumerable().Where(x => x["Review"].Equals("Nice"));
-            foreach (var emp in result)
+            foreach (var emp in val)
             {
                 Console.WriteLine("ProductID ={0} , UserID = {1} , Rating = {2} , Review = {3} ,IsLike = {4} ", emp["ProductID"], emp["UserID"], emp["Rating"], emp["Review"], emp["IsLike"]);
             }
         }
-
+        //UC12
+        public void  ProductID_RatingOrderBy()
+        {
+          
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Using LinQ");
+            Console.WriteLine("-------------------------------------");
+            var result = from product in dataTable.AsEnumerable() orderby product["Rating"] where product["ProductID"].Equals(10) select product;
+            foreach (var emp in result)
+            {
+                Console.WriteLine("ProductID ={0} , UserID = {1} , Rating = {2} , Review = {3} ,IsLike = {4} ", emp["ProductID"], emp["UserID"], emp["Rating"], emp["Review"], emp["IsLike"]);
+            }
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Using Lambda");
+            Console.WriteLine("-------------------------------------");
+            var val = dataTable.AsEnumerable().OrderBy(x => x["Rating"]).Where(x => x["ProductID"].Equals(10));
+            foreach (var emp in val)
+            {
+                Console.WriteLine("ProductID ={0} , UserID = {1} , Rating = {2} , Review = {3} ,IsLike = {4} ", emp["ProductID"], emp["UserID"], emp["Rating"], emp["Review"], emp["IsLike"]);
+            }
+        }
     }
 }
