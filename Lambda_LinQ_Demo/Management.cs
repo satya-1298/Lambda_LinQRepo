@@ -222,6 +222,27 @@ namespace Lambda_LinQ_Demo
                 Console.WriteLine("ProductID ={0}, Rating = {1} ", emp["ProductID"], emp["Rating"]);
             }
         }
+        //UC11
+        public void Review_Nice()
+        {
+
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Using LinQ");
+            Console.WriteLine("-------------------------------------");
+            var result = from product in dataTable.AsEnumerable() where product["Review"].Equals("Nice") select product;
+            foreach (var emp in result)
+            {
+                Console.WriteLine("ProductID ={0} , UserID = {1} , Rating = {2} , Review = {3} ,IsLike = {4} ", emp["ProductID"], emp["UserID"], emp["Rating"], emp["Review"], emp["IsLike"]);
+            }
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Using Lambda");
+            Console.WriteLine("-------------------------------------");
+            var val = dataTable.AsEnumerable().Where(x => x["Review"].Equals("Nice"));
+            foreach (var emp in result)
+            {
+                Console.WriteLine("ProductID ={0} , UserID = {1} , Rating = {2} , Review = {3} ,IsLike = {4} ", emp["ProductID"], emp["UserID"], emp["Rating"], emp["Review"], emp["IsLike"]);
+            }
+        }
 
     }
 }

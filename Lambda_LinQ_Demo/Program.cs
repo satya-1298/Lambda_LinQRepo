@@ -55,6 +55,7 @@ namespace Lambda_LinQ_Demo
                 Console.WriteLine("8-Retrieve record whose islike is true");
                 Console.WriteLine("9-Display");
                 Console.WriteLine("10-Display ProductID rating whose review is average");
+                Console.WriteLine("11-Display record Whose review is Nice");
                 Console.WriteLine("-------------------------------------");
                 Console.WriteLine("Choose a option");
                 Console.WriteLine("-------------------------------------");
@@ -90,6 +91,9 @@ namespace Lambda_LinQ_Demo
                         break;
                     case 10:
                         management.Average_Rating();
+                        break;
+                    case 11:
+                        management.Review_Nice();
                         break;
 
 
