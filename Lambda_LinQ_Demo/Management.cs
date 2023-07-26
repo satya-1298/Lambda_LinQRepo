@@ -202,7 +202,26 @@ namespace Lambda_LinQ_Demo
             }
 
         }
-       
+        //UC-10
+        public void Average_Rating()
+        {
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Using LinQ");
+            Console.WriteLine("-------------------------------------");
+            var result = from product in dataTable.AsEnumerable() where product["Review"].Equals("Average") select product;
+            foreach (var emp in result)
+            {
+                Console.WriteLine("ProductID ={0}, Rating = {1} ", emp["ProductID"], emp["Rating"]);
+            }
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Using Lambda");
+            Console.WriteLine("-------------------------------------");
+            var value = dataTable.AsEnumerable().Where(x => x["Review"].Equals("Average"));
+            foreach (var emp in value)
+            {
+                Console.WriteLine("ProductID ={0}, Rating = {1} ", emp["ProductID"], emp["Rating"]);
+            }
+        }
 
     }
 }
