@@ -10,6 +10,7 @@ namespace Lambda_LinQ_Demo
 {
     public class Management
     {
+        DataTable dataTable = new DataTable();
         //UC-2
         public void TopRecord(List<ProductReview> products)
         {
@@ -45,10 +46,10 @@ namespace Lambda_LinQ_Demo
             Console.WriteLine("-------------------------------");
             var record = from product in products where (product.ProductID == 1 || product.ProductID == 4 || product.ProductID == 9) && product.Rating > 3 select product;
             foreach (var prod in record)
-              {
+            {
                 Console.WriteLine(prod.ProductID + "  " + prod.UserID + "  " + prod.Rating + "  " + prod.Review + "  " + prod.IsLike);
 
-              }
+            }
 
         }
         public void Display(IEnumerable<ProductReview> satya)
@@ -60,7 +61,7 @@ namespace Lambda_LinQ_Demo
             }
 
         }
-       //UC-4 - Retrieve count of review present for each productID
+        //UC-4 - Retrieve count of review present for each productID
         public void CountProduct(List<ProductReview> products)
         {
             var record = products.GroupBy(x => x.ProductID).Select(x => new { ProductId = x.Key, Count = x.Count() });
@@ -144,20 +145,64 @@ namespace Lambda_LinQ_Demo
             }
         }
         //UC-8
-        public DataTable AddToDataTable(List<ProductReview> product)
+        public void AddToDataTable(List<ProductReview> product)
         {
-            DataTable dataTable = new DataTable();
             dataTable.Columns.Add("ProductID", typeof(int));
-            dataTable.Columns.Add("UserID");
-            dataTable.Columns.Add("Rating");
-            dataTable.Columns.Add("Review");
-            dataTable.Columns.Add("IsLike");
-            foreach(var data in product)
+            dataTable.Columns.Add("UserID", typeof(int));
+            dataTable.Columns.Add("Rating", typeof(int));
+            dataTable.Columns.Add("Review", typeof(string));
+            dataTable.Columns.Add("IsLike", typeof(bool));
+
+           
+            foreach (var data in product)
             {
-                dataTable.Rows.Add(data.ProductID,data.UserID,data.Rating,data.Review,data.IsLike);
+                dataTable.Rows.Add(data.ProductID, data.UserID, data.Rating, data.Review, data.IsLike);
 
             }
-            return dataTable;
+
         }
+        //UC-9
+        public void RetriveDataFrom_DataTable()
+        {
+            
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Using LinQ");
+            Console.WriteLine("-------------------------------------");
+            var ser = from p in dataTable.AsEnumerable()
+                      where (bool)p["IsLike"] == Convert.ToBoolean(true)
+                      select p;
+            foreach (var emp in ser)
+            {
+                Console.WriteLine("ProductID ={0} , UserID = {1} , Rating = {2} , Review = {3} ,IsLike = {4} ", emp["ProductID"], emp["UserID"], emp["Rating"], emp["Review"], emp["IsLike"]);
+            }
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Using Lambda");
+            Console.WriteLine("-------------------------------------");
+            var result = dataTable.AsEnumerable().Where(x => (bool)x["IsLike"]==Convert.ToBoolean(true));
+            foreach (var emp in result)
+            {
+                Console.WriteLine("ProductID ={0} , UserID = {1} , Rating = {2} , Review = {3} ,IsLike = {4} ", emp["ProductID"], emp["UserID"], emp["Rating"], emp["Review"], emp["IsLike"]);
+            }
+
+        }
+        public void Display()
+        {
+            //Display certain Column
+            Console.WriteLine("-------------------------------------");
+
+            foreach (DataRow rows in dataTable.Rows)
+            {
+                Console.WriteLine("ProductID = {0} ", rows["ProductID"]);
+            }
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("-------------------------------------");
+            foreach (DataRow emp in dataTable.Rows)
+            {
+                Console.WriteLine("ProductID ={0} , UserID = {1} , Rating = {2} , Review = {3} ,IsLike = {4} ", emp["ProductID"], emp["UserID"], emp["Rating"], emp["Review"], emp["IsLike"]);
+            }
+
+        }
+       
+
     }
 }
